@@ -15,7 +15,7 @@ h# 魔方赛事提醒工具 (CubingEventsAlert)
 1. 确保已安装Python环境（建议Python 3.6+）
 2. 安装所需依赖库：
    ```
-   pip install requests beautifulsoup4
+   pip install -r requirements.txt
    ```
 3. 运行程序：
    - 双击 `main.pyw` 文件运行程序
@@ -68,4 +68,4 @@ core.HIGHLIGHTED_PROVINCES = ["广东", "北京"]
 
 ## 许可
 
-本项目采用MIT许可证。欢迎贡献代码或提出建议！c
+本项目采用MIT许可证。欢迎贡献代码或提出建议！
