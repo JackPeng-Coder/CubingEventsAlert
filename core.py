@@ -8,7 +8,7 @@ import os
 
 # 获取新数据
 def get_new_data():
-    url = "https://cubing.com/competition?year=current&type=WCA&province=&event=333"
+    url = "https://cubing.com/competition?year=&type=&province=&event="
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
@@ -110,11 +110,11 @@ def show_popup(new_competitions):
 
     for i, comp in enumerate(new_competitions):
         if len(comp) >= 5:
-            # 判断是否为广东赛事
-            is_guangdong = comp[2].strip() == "广东"
-            card_bg = "#fff0f0" if is_guangdong else "white"
-            name_fg = "#e53935" if is_guangdong else "#2196F3"
-            border_color = "#e53935" if is_guangdong else "#cccccc"
+            # 判断是否为需要标红的省份
+            is_highlighted = comp[2].strip() in HIGHLIGHTED_PROVINCES
+            card_bg = "#fff0f0" if is_highlighted else "white"
+            name_fg = "#e53935" if is_highlighted else "#2196F3"
+            border_color = "#e53935" if is_highlighted else "#cccccc"
             comp_frame = tk.Frame(
                 scrollable_frame,
                 bg=card_bg,
@@ -122,7 +122,7 @@ def show_popup(new_competitions):
                 relief=tk.GROOVE,
                 highlightbackground=border_color,
                 highlightcolor=border_color,
-                highlightthickness=2 if is_guangdong else 1,
+                highlightthickness=2 if is_highlighted else 1,
             )
             comp_frame.pack(fill=tk.X, padx=10, pady=5, ipadx=5, ipady=5)
             name_label = tk.Label(
@@ -162,7 +162,7 @@ def show_popup(new_competitions):
                 text=comp[2],
                 font=content_font,
                 bg=card_bg,
-                fg="#e53935" if is_guangdong else "black",
+                fg="#e53935" if is_highlighted else "black",
             )
             province_value.pack(side=tk.LEFT)
             city_frame = tk.Frame(comp_frame, bg=card_bg)
