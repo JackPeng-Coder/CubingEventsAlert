@@ -5,6 +5,9 @@ import tkinter as tk
 from tkinter import messagebox, font
 import os
 
+# 设置需要标红的省份
+HIGHLIGHTED_PROVINCES = ["广东"]
+
 
 # 获取新数据
 def get_new_data():
